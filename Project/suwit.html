@@ -1,0 +1,52 @@
+<!doctype html>
+<html> 
+ <head></head> 
+ <body> 
+  <div>
+    SUWIT GAME 
+  </div> 
+  <script src="suwitgame"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">var tanya = true;
+
+
+while (tanya){
+
+//memilih pilihan player
+
+var p = prompt('Silahkan pilih: Gunting, Batu, Kertas (Perhatikan Huruf Kapital)');
+
+
+//memilih pilihan komputer
+//mengeluarkan bilangan random
+var cp = Math.random();
+
+if ( cp < 0.34 ){
+  cp = 'Gunting';
+} else if (cp >= 0.34 && cp < 0.67){
+  cp = 'Batu';
+} else {
+  cp = 'Kertas';
+}
+
+//menentukan rules
+var hasil = '';
+
+if (p == cp){
+  hasil = "Seri!";
+} else if (p == 'Batu'){
+  hasil = (cp == 'Gunting') ? 'MENANG!' : 'KALAH!';
+} else if (p == 'Gunting'){
+  hasil = (cp == 'Batu') ? 'KALAH!' : 'MENANG';
+} else if (p == 'Kertas'){
+  hasil = (cp == 'Gunting') ? 'KALAH!' : 'MENANG!';
+} else {
+  hasil = 'Memasukan pilihan yang salah!';
+}
+//tampilkan hasil
+alert('Kamu Memilih: ' + p + '\nKomputer memilih: ' + cp + '\nMaka Hasilnya Adalah: ' + hasil );
+
+  tanya = confirm('Apakah Kamu Ingin Bermain Lagi?');
+}
+
+alert("Terima Kasih!!!")</script></body></html>

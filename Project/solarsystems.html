@@ -1,0 +1,209 @@
+<!doctype html>
+<html> 
+ <head><style type="text/css" id="dcoder_stylesheet">body {
+  margin: 0px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.space {
+  font-size: 10px;
+  width: 40em;
+  height: 50em;
+  position: relative;
+}
+
+.sun {
+  position: absolute;
+  top: 15em;
+  left: 15em;
+  height: 10em;
+  width: 10em;
+  background-color: yellow;
+  border-radius: 50%;
+  box-shadow: 0 0 3em white;
+}
+
+.earth,
+.moon {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  border-width: 0.4em 0.4em 0 0;
+  border-radius: 50%;
+}
+
+.mars,
+.phobos {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  border-width: 0.4em 0.4em 0 0;
+  border-radius: 50%;
+}
+
+.venus {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  border-width: 0.4em 0.4em 0 0;
+  border-radius: 50%;
+}
+
+.earth {
+  top: 5em;
+  left: 5em;
+  height: 30em;
+  width: 30em;
+  animation: orbit 36.5s linear infinite;
+}
+
+.moon {
+  top: 0;
+  right: 0;
+  width: 8em;
+  height: 8em;
+  animation: orbit 2.7s linear infinite;
+}
+
+.mars {
+  top: 7em;
+  left: 7em;
+  height: 30em;
+  width: 20em;
+  animation: orbit 35.5s linear infinite;
+}
+
+.phobos {
+  top: 0;
+  right: 0;
+  width: 4em;
+  height: 4em;
+  animation: orbit 2.7s linear infinite;
+}
+
+.venus {
+  top: 10em;
+  left: 10em;
+  height: 20em;
+  width: 25em;
+  animation: orbit 34.5s linear infinite;
+}
+
+.earth::before,
+.moon::before,
+.mars::before,
+.phobos::before,
+.venus::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.earth::before {
+  top: 2.8em;
+  right: 2.8em;
+  width: 3em;
+  height: 3em;
+  animation: DayNight 2.3s linear infinite;
+  background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgImv6W33drmytaWb_RpTCwhT3CqITdeOPGzfAK7r_Xj3zagk-eaBQevOxTnjGHFdcLMlmej0ztEJDPml98cmt8tvm_qEUv_UpYsofcnxuHh0xIeIW5vSRXXu7ptdZ1jRaRoRyujhZKhN_Bmb24De_92pKSgT18hgwbM9ecFm_irpgfuJPTeX152XI6Lg/s612/simplified-world-map-vector-illustration.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.moon::before {
+  top: 0.8em;
+  right: 0.2em;
+  width: 1.2em;
+  height: 1.2em;
+  background-color: silver;
+}
+
+.mars::before {
+  top: 1.8em;
+  right: 1.8em;
+  width: 2.5em;
+  height: 2.5em;
+  background-color: red;
+}
+
+.phobos::before {
+  top: 0.4em;
+  right: 0.1em;
+  width: 0.8em;
+  height: 0.8em;
+  background-color: gray;
+}
+
+.venus::before {
+  top: 2.3em;
+  right: 2.3em;
+  width: 2.8em;
+  height: 2.8em;
+  background-color: orange;
+}
+
+@keyframes DayNight {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}</style></head> 
+ <body> 
+  <div class="space"> 
+   <div class="star"></div> 
+   <div class="sun"></div> 
+   <div class="earth"> 
+    <div class="moon"></div> 
+   </div> 
+   <div class="mars"> 
+    <div class="phobos"></div> 
+   </div> 
+   <div class="venus"></div> 
+  </div> 
+ 
+<script type="text/javascript" id="dcoder_script">function createStar() {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  const x = Math.floor(Math.random() * window.innerWidth);
+  const y = Math.floor(Math.random() * window.innerHeight);
+  star.style.left = x + 'px';
+  star.style.top = y + 'px';
+  document.body.appendChild(star);
+
+  setTimeout(() => {
+    star.style.opacity = '1';
+  }, Math.random() * 2000);
+  
+  setTimeout(() => {
+    star.style.opacity = '0';
+  }, Math.random() * 5000);
+}
+
+function createStars() {
+  for (let i = 0; i < 100; i++) {
+    createStar();
+  }
+}
+
+createStars();</script></body></html>
