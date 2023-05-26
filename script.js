@@ -1,40 +1,30 @@
-// Add smooth scrolling to all links
-$('a[href^="#"]').on('click', function(event) {
-    var target = $(this.getAttribute('href'));
-    if (target.length) {
-        event.preventDefault();
-        $('html, body').stop().animate({
-            scrollTop: target.offset().top
-        }, 1000);
-    }
-});
 
-// Toggle nav menu on mobile
-$('.nav-toggle').on('click', function() {
-    $('nav').toggleClass('active');
-});
 
-var draggable = document.getElementById("draggable");
+// Membuat garis vertikal yang menghubungkan item di timeline
+        var timelineItems = document.querySelectorAll('.timeline-item');
 
-draggable.addEventListener("dragstart", function(event) {
-  // Menandai elemen sebagai elemen yang sedang di-drag
-  event.dataTransfer.setData("text", event.target.id);
-});
+        for (var i = 0; i < timelineItems.length; i++) {
+            if (i !== timelineItems.length - 1) {
+                var timelineContentHeight = timelineItems[i].querySelector('.timeline-content').offsetHeight;
+                var nextTimelineContentHeight = timelineItems[i + 1].querySelector('.timeline-content').offsetHeight;
+                var lineHeight = Math.max(timelineContentHeight, nextTimelineContentHeight);
 
-// Menambahkan event listener untuk memindahkan elemen saat sedang di-drag
-document.addEventListener("dragover", function(event) {
-  event.preventDefault();
-});
+                var line = document.createElement('div');
+                line.classList.add('timeline-line');
+                line.style.height = lineHeight + 'px';
+                timelineItems[i].appendChild(line);
+            }
+        }
 
-document.addEventListener("drop", function(event) {
-  event.preventDefault();
-  var data = event.dataTransfer.getData("text");
-  var draggableElement = document.getElementById(data);
-  var dropzone = event.target;
 
-  // Mengganti posisi elemen dengan posisi dropzone (tempat tujuan)
-  dropzone.parentNode.insertBefore(draggableElement, dropzone.nextSibling);
-});
+var button = document.getElementById("draggable");
+
+if (button) {
+  button.addEventListener("click", function() {
+    window.location.href = "education.html";
+  });
+}
+
 
 function toggleTheme() {
   var element = document.body;
